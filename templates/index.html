@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block header %}
+<!--hero-->
+<section id="hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 p-0">
+				<div class="hero-image-container">
+					<div class="hero-image ">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-12 col-md-6 hero-text">
+									<p class="mgd-display-1">Westhill Fitness <span
+											class="mgd-underline">Two week Shred</span>?</p>
+									<p class="mgd-display-2">Feeling tired and meh?</p>
+									<p class="mgd-display-3">Kickstart your health kick with our two-week shred!</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/hero-->
+
+<!--quick-links-->
+<section id="quick-links">
+	<div class="container">
+		<div class="row gy-1 pt-1">
+			<div class="col-12 col-md-4 quick-links-col-1">
+				<div class="quick-links-image-container">
+					<div class="quick-links-image image2">
+						<div class="quick-links-text">
+							<a href="{{ url_for('recipes') }}">&nbsp;Recipes&nbsp;</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-4 quick-links-col-2">
+				<div class="quick-links-image-container">
+					<div class="quick-links-image image3">
+						<div class="quick-links-text">
+							<a href="{{ url_for('about') }}">&nbsp;About us&nbsp;</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-4 quick-links-col-3">
+				<div class="quick-links-image-container">
+					<div class="quick-links-image image4">
+						<div class="quick-links-text">
+							<a href="{{ url_for('contact') }}">&nbsp;Contact us&nbsp;</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/quick-links-->
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
