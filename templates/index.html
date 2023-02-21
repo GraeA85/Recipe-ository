@@ -1,67 +1,54 @@
-{% extends "base.html" %}
-{% block header %}
-<!--hero-->
-<section id="hero">
-	<div class="container">
-		<div class="row">
-			<div class="col-12 p-0">
-				<div class="hero-image-container">
-					<div class="hero-image ">
-						<div class="container-fluid">
-							<div class="row">
-								<div class="col-12 col-md-6 hero-text">
-									<p class="mgd-display-1">Westhill Fitness <span
-											class="mgd-underline">Two week Shred</span>?</p>
-									<p class="mgd-display-2">Feeling tired and meh?</p>
-									<p class="mgd-display-3">Kickstart your health kick with our two-week shred!</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<!--/hero-->
+{% extends "base.html" %} 
+{% block content %}
 
-<!--quick-links-->
-<section id="quick-links">
-	<div class="container">
-		<div class="row gy-1 pt-1">
-			<div class="col-12 col-md-4 quick-links-col-1">
-				<div class="quick-links-image-container">
-					<div class="quick-links-image image2">
-						<div class="quick-links-text">
-							<a href="{{ url_for('recipes') }}">&nbsp;Recipes&nbsp;</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-12 col-md-4 quick-links-col-2">
-				<div class="quick-links-image-container">
-					<div class="quick-links-image image3">
-						<div class="quick-links-text">
-							<a href="{{ url_for('about') }}">&nbsp;About us&nbsp;</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-12 col-md-4 quick-links-col-3">
-				<div class="quick-links-image-container">
-					<div class="quick-links-image image4">
-						<div class="quick-links-text">
-							<a href="{{ url_for('contact') }}">&nbsp;Contact us&nbsp;</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<!--/quick-links-->
+<!--closing div to close container on base template and allow full width jumbatron-->
+</div>
 
-{% endblock %}
+<div class="jumbotron" title="Westhill Fitness - Shred">
+    <div class="jumbatron-overlay"></div>
+    <div class="jumbatron-content">
+        <h2 class="page-title-responsive">The Shred Recipes</h2>
+        <h3 class="page-subtitle">food plans and shopping lists</h3>
+        {% if session.user %}
+        <a href="{{ url_for('get_recipes') }}" class="btn waves-effect waves-light gather-colour btn-large">View recipes in the shred meal plan</a>
+        {% else %}
+        <a href="{{ url_for('register') }}" class="btn waves-effect waves-light gather-colour btn-large">Get Started</a>
+        {% endif %}
+    </div>
+</div>
 
-{% block footer %}
+<div class="container">
+        <div class="row three-across">
+            <div class="col s12 m6 l4 center-align">
+                <div class="card-panel">
+                <i class="fa-solid fa-layer-group gather-red-text" aria-hidden="true"></i>
+                <h4 class="page-title gather-red-text">Shopping List</h4>
+                <p>Get your shopping lists</p>
+                {% if session.user %}
+                    <a href="{{ url_for('shopping_lists') }}" class="btn waves-effect waves-light gather-colour">Shopping Lists</a>
+                {% endif %}
+                </div>
+            </div>
+            <div class="col s12 m6 l4 center-align">
+                <div class="card-panel">
+                <i class="fa-solid fa-users gather-red-text" aria-hidden="true"></i>
+                <h4 class="page-title gather-red-text">Discover</h4>
+                <p>View the two week meal plan for the shred</p>
+                {% if session.user %}
+                    <a href="{{ url_for('get_recipes') }}" class="btn waves-effect waves-light gather-colour">Browse Food Plans</a>
+                {% endif %}
+            </div>
+            </div>
+            <div class="col s12 m12 l4 center-align">
+                <div class="card-panel">
+                <i class="fa-solid fa-star gather-red-text" aria-hidden="true"></i>
+                <h4 class="page-title gather-red-text">Save</h4>
+                <p>Contribute Recipes for our next shred</p>
+                {% if session.user %}
+                <a href="{{ url_for('recipes') }}" class="btn waves-effect waves-light gather-colour">Contribute and see submitted Recipes</a>
+                {% endif %}
+            </div>
+            </div>
+    </div>
+   
 {% endblock %}
