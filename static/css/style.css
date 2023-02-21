@@ -19,3 +19,73 @@
     font-family: 'Poiret One', cursive;
 }
 
+.jumbotron {
+    height: 300px;
+    background-image : url('../images/gather-splash-image.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.jumbatron-overlay {
+    background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.jumbatron-content {
+    z-index: 2;
+    text-align: center;
+}
+
+.three-across {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.three-across i {
+    font-size: xx-large;
+}
+
+/*--------------------- Cards --------------------*/
+
+.card {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/*cuisine cards*/
+.card.cuisine-card {
+    height: 200px;
+}
+
+.card-image-url {
+    height: 175px;
+}
+
+/*Hidden code displayed on colour top on card*/
+.image-url {
+    display: none;
+}
+
+.card-preview {
+  padding: 4px 0 4px 0;
+}
+
+/*Default image if no image URL is supplied*/
+.holding-image {
+    background-image : url('../images/food-display.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
