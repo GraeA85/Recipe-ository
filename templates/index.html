@@ -1,9 +1,6 @@
 {% extends "base.html" %} 
 {% block content %}
 
-<!--closing div to close container on base template and allow full width jumbatron-->
-</div>
-
 <div class="jumbotron" title="Westhill Fitness - Shred">
     <div class="jumbatron-overlay"></div>
     <div class="jumbatron-content">
@@ -21,9 +18,9 @@
         <div class="row three-across">
             <div class="col s12 m6 l4 center-align">
                 <div class="card-panel">
-                <i class="fa-solid fa-layer-group gather-red-text" aria-hidden="true"></i>
-                <h4 class="page-title gather-red-text">Shopping List</h4>
-                <p>Get your shopping lists</p>
+                <i class="fa-solid fa-cart-shopping orange-text" aria-hidden="true"></i>
+                <h4 class="page-title orange-text">Shopping List</h4>
+                <p>Get your shopping lists so you're ready to go!</p>
                 {% if session.user %}
                     <a href="{{ url_for('shopping_lists') }}" class="btn waves-effect waves-light gather-colour">Shopping Lists</a>
                 {% endif %}
@@ -31,8 +28,8 @@
             </div>
             <div class="col s12 m6 l4 center-align">
                 <div class="card-panel">
-                <i class="fa-solid fa-users gather-red-text" aria-hidden="true"></i>
-                <h4 class="page-title gather-red-text">Discover</h4>
+                <i class="fa-solid fa-kitchen-set orange-text" aria-hidden="true"></i>
+                <h4 class="page-title orange-text">See Food Plans</h4>
                 <p>View the two week meal plan for the shred</p>
                 {% if session.user %}
                     <a href="{{ url_for('get_recipes') }}" class="btn waves-effect waves-light gather-colour">Browse Food Plans</a>
@@ -41,11 +38,11 @@
             </div>
             <div class="col s12 m12 l4 center-align">
                 <div class="card-panel">
-                <i class="fa-solid fa-star gather-red-text" aria-hidden="true"></i>
-                <h4 class="page-title gather-red-text">Save</h4>
+                <i class="fa-regular fa-square-plus orange-text" aria-hidden="true"></i>
+                <h4 class="page-title orange-text">Contribute</h4>
                 <p>Contribute Recipes for our next shred</p>
                 {% if session.user %}
-                <a href="{{ url_for('recipes') }}" class="btn waves-effect waves-light gather-colour">Contribute and see submitted Recipes</a>
+                <a href="{{ url_for('get_recipes') }}" class="btn waves-effect waves-light gather-colour">Contribute and see submitted Recipes</a>
                 {% endif %}
             </div>
             </div>

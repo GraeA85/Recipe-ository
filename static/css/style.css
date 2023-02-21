@@ -19,9 +19,17 @@
     font-family: 'Poiret One', cursive;
 }
 
+body {
+    font-family: 'Poiret One', cursive;
+}
+
+.orange-text {
+    color:orangered;
+}
+
 .jumbotron {
     height: 300px;
-    background-image : url('../images/gather-splash-image.jpg');
+    background-image : url('../images/food-display.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -44,6 +52,7 @@
 .jumbatron-content {
     z-index: 2;
     text-align: center;
+    font-weight: bolder;
 }
 
 .three-across {
