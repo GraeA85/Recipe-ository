@@ -125,10 +125,15 @@ def add_recipe():
         recipe = {
             "recipe_category": request.form.get("recipe_category"),
             "recipe_name": request.form.get("recipe_name"),
-            "recipe_description": request.form.get("recipe_description"),
+            "ingredients": ingredients,
+            "instructions": instructions,
+            "prep time": request.form.get("prep_time"),
+            "cooking time": request.form.get("cooking_time"),
+            "serves": request.form.get("serves"),
+            "calories per serving": request.form.get("calories"),
             "is_vegetarian": is_vegetarian,
-            "date_created": request.form.get("date_created"),
-            "created_by": session["user"]
+            "created_by": session["user"],
+            "timestamp": datetime.datetime.utcnow()
         }
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe Successfully Added")
@@ -147,10 +152,15 @@ def edit_recipe(recipe_id):
         submit = {
             "recipe_category": request.form.get("recipe_category"),
             "recipe_name": request.form.get("recipe_name"),
-            "recipe_description": request.form.get("recipe_description"),
+            "ingredients": ingredients,
+            "instructions": instructions,
+            "prep time": request.form.get("prep_time"),
+            "cooking time": request.form.get("cooking_time"),
+            "serves": request.form.get("serves"),
+            "calories per serving": request.form.get("calories"),
             "is_vegetarian": is_vegetarian,
-            "date_created": request.form.get("date_created"),
-            "created_by": session["user"]
+            "created_by": session["user"],
+            "timestamp": datetime.datetime.utcnow()
         }
         mongo.db.recipes.replace_one({"_id": ObjectId(recipe_id)}, submit)
         flash("Recipe Successfully Updated")
