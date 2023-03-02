@@ -44,6 +44,11 @@ def shopping_lists():
     return render_template("shopping_lists.html")
 
 
+@app.route("/meal_plans")
+def meal_plans():
+    return render_template("meal_plans.html")
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
