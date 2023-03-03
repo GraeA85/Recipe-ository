@@ -21,36 +21,43 @@
         </form>
     </div>
 
-    {% if recipes|length > 0 %}
-    <ul class="collapsible">
-        {% for recipe in recipes %}
-        <li>
-            <div class="collapsible-header white-text light-blue darken-4 text-shadow">
-                <div class="col s3">
-                    <i class="fas fa-caret-down"></i>
-                    {% if session.user|lower == recipe.created_by|lower %}
-                        <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn-small green accent-4">Done</a>
-                        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small light-blue lighten-1">Edit</a>
-                    {% endif %}
-                </div>
-                <div class="col s9">
-                    <strong>{{ recipe.recipe_name }}</strong> : {{ recipe.date_created }}
-                    {% if recipe.is_vegetarian == "on" %}
-                        <i class="fas fa-exclamation-circle light-blue-text text-lighten-2 tooltipped"
-                            data-position="right" data-tooltip="Vegetarian"></i>
-                    {% endif %}
+    <div class="row">
+        {% if recipes|length > 0 %}
+            {% for recipe in recipes %}
+    
+            <div class="col s12 m6 xl4">
+                <div class="card hoverable">
+                    <div class="card-image">
+                        <div class="card-image-url" title="Image of {{recipe.recipe_name}}">
+                            <span class="image-url">{{recipe.image_url}}</span>
+                        </div>
+                        <a class="btn-floating halfway-fab waves-effect waves-light gather-colour activator tooltipped" data-position="bottom" data-tooltip="Quick View"><i class="fa-solid fa-eye"></i></a>
+                    </div>
+                    <div class="card-content">
+                        <h5><span class="card-title">{{recipe.recipe_name}}</span></h5>
+                        <p class="card-preview">By {{recipe.created_by}}</p>
+                        {% for recipe_category in recipe_categories %} {% if recipe._id == recipe._id | int %}
+                        <p class="card-preview">Cuisine: {{ recipe.recipe_name }}</p>
+                        {% endif %} {% endfor %}
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4"><i class="fa-solid fa-xmark right"></i>{{recipe.recipe_name}}</span>
+                        <p>Servings: {{recipe.serves}}</p>
+                        <p>Prep time: {{recipe.prep_time}} minutes</p>
+                        <p>Cooking time: {{recipe.cooking_time}} minutes</p>
+                        <h6>Ingredients</h6>
+                        <div class="string-to-array">{{recipe.ingredients}}</div>
+                        <h6>Steps:</h6>
+                        <div class="steps-string-to-array">{{recipe.instructions}}</div>
+                        </div>
+                    
                 </div>
             </div>
-            <div class="collapsible-body">
-                <strong>{{ recipe.recipe_category }}</strong>
-                <p>{{ recipe.recipe_description }}</p>
-                <p><em>by: {{ recipe.created_by }}</em></p>
-            </div>
-        </li>
-        {% endfor %}
-    </ul>
-    {% else %}
-        <h3 class="red-text text-darken-4 center-align">No Results Found</h3>
-    {% endif %}
-
-{% endblock %}
+    
+            {% endfor %}
+        {% else %}
+            <p class="center-align">Oops, no results found! Reset the search and try again</p>
+        {% endif %}
+    </div>
+    
+    {% endblock %}

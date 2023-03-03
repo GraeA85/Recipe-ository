@@ -103,6 +103,23 @@ def login():
     return render_template("login.html")
 
 
+def format_string_to_list(user_input, has_comma_separator=True):
+    """Formats user input into arrays for storing in db
+    Used for submit recipe and edit recipe
+    """
+    if has_comma_separator:
+        # for use with comma seperated entries
+        # also replaces new lines in case values C+V in
+        input_remove_new_lines = user_input.replace("\r\n", ",")
+        input_list = input_remove_new_lines.split(",")
+    else:
+        # for use with new line seperated entries
+        input_list = user_input.split("\r\n")
+    # remove trailing spaces
+    input_list_stripped = [i.lstrip() for i in input_list]
+    return input_list_stripped
+
+
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
@@ -126,6 +143,16 @@ def logout():
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
     if request.method == "POST":
+
+        # Turns user data into an array to be stored in db
+        # Comma seperated entry
+        ingredients = request.form.get("ingredients")
+        ingredients = format_string_to_list(ingredients)
+        # New line seperated entry
+        instructions = request.form.get("instructions")
+        instructions = format_string_to_list(
+            instructions, False)
+
         is_vegetarian = "on" if request.form.get("is_vegetarian") else "off"
         recipe = {
             "recipe_category": request.form.get("recipe_category"),
@@ -138,8 +165,7 @@ def add_recipe():
             "calories per serving": request.form.get("calories"),
             "is_vegetarian": is_vegetarian,
             "created_by": session["user"],
-            "timestamp": datetime.datetime.utcnow()
-        }
+                }
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe Successfully Added")
         return redirect(url_for("get_recipes"))

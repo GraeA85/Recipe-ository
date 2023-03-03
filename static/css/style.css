@@ -116,36 +116,41 @@ body {
     
 }
 
-.page-footer {
-    background-color: #eceff1;
-    border-top: 2px solid #acddd7;
-    color: #3e3d43;
-    position:fixed;
-    bottom:0;
-    width: 100vw;
-    height: 10vh;
-       
-}
-
-.footer-title {
-    font-family: "Poiret One", cursive;
-    color: #097670;
-    
-    
-}
-
-.social-links {
+body {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
+    min-height: 100vh;
+    flex-direction: column;
+  }
 
-.social-links a i {
-    font-size: xx-large;
-    color: #097670;
-}
+  main {
+    flex: 1 0 auto;
+  }
 
-#body {
-    padding:10px;
-    padding-bottom:60px;   /* Height of the footer */
+  .page-footer {
+    background-color: rgb(148, 163, 163);
+    
+  }
+
+ .fa-brands {
+    color:antiquewhite;
+    
  }
+
+h6 {
+    text-align: center;
+}
+
+.string-to-array ul:not(.browser-default)>li {
+    list-style-type: circle;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+  
+  .string-to-array ul:not(.browser-default) {
+    padding-left: 40px;
+  }
+  
+  ol li {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
