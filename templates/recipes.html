@@ -37,7 +37,7 @@
                         <h5><span class="card-title">{{recipe.recipe_name}}</span></h5>
                         <p class="card-preview">By {{recipe.created_by}}</p>
                         {% for recipe_category in recipe_categories %} {% if recipe._id == recipe._id | int %}
-                        <p class="card-preview">Cuisine: {{ recipe.recipe_name }}</p>
+                        <p class="card-preview">Recipe: {{ recipe.recipe_name }}</p>
                         {% endif %} {% endfor %}
                     </div>
                     <div class="card-reveal">

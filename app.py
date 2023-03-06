@@ -146,19 +146,19 @@ def add_recipe():
 
         # Turns user data into an array to be stored in db
         # Comma seperated entry
-        ingredients = request.form.get("ingredients")
-        ingredients = format_string_to_list(ingredients)
+        ingredients_string = request.form.get("ingredients")
+        ingredients_list = format_string_to_list(ingredients_string)
         # New line seperated entry
-        instructions = request.form.get("instructions")
-        instructions = format_string_to_list(
-            instructions, False)
+        instructions_string = request.form.get("instructions")
+        instructions_list = format_string_to_list(
+            instructions_string, False)
 
         is_vegetarian = "on" if request.form.get("is_vegetarian") else "off"
         recipe = {
             "recipe_category": request.form.get("recipe_category"),
             "recipe_name": request.form.get("recipe_name"),
-            "ingredients": ingredients,
-            "instructions": instructions,
+            "ingredients": ingredients_list,
+            "instructions": instructions_list,
             "prep time": request.form.get("prep_time"),
             "cooking time": request.form.get("cooking_time"),
             "serves": request.form.get("serves"),
