@@ -3,12 +3,12 @@
 
     <h3 class="light-blue-text text-darken-4 center-align">Edit Recipe</h3>
 
-    <div class="row card-panel grey lighten-5">
+    <div class="row card-panel grey lighten-5" id="edit-card">
         <form class="col s12" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
             <!-- category selection -->
 			<div class="row">
 				<div class="input-field col s12">
-                    <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
+                    <i class="fas fa-folder-open prefix orange-text text-darken-4"></i>
 					<select id="recipe_category" name="recipe_category" class="validate" required>
                         <option value="" disabled>Choose Recipe Category</option>
                         {% for recipe_category in recipe_categories %}
@@ -25,7 +25,7 @@
             <!-- recipe name -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
+                    <i class="fas fa-pencil-alt prefix green-text text-lighten-1"></i>
                     <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50"
                         value="{{ recipe.recipe_name }}" type="text" class="validate" required>
                     <label for="recipe_name">Recipe Name</label>
@@ -34,7 +34,7 @@
             <!-- recipe ingredients -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
+                    <i class="fa-solid fa-scroll prefix light-blue-text text-darken-4"></i>
                     <textarea id="recipe_ingredients" name="recipe_ingredients" minlength="5"
                         maxlength="200" class="materialize-textarea validate" required>
                         {{- recipe.ingredients -}}
@@ -45,7 +45,7 @@
             <!-- recipe instructions -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
+                    <i class="fa-solid fa-list-check prefix lime-text text-darken-4"></i>
                     <textarea id="recipe_instructions" name="recipe_instructions" minlength="5"
                         maxlength="200" class="materialize-textarea validate" required>
                         {{- recipe.instructions -}}
@@ -53,33 +53,47 @@
                     <label for="instructions">Instructions</label>
                 </div>
             </div>
-            <!-- prep time -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
-                    <input id="recipe_prep_time" name="recipe_prep_time" minlength="1"
-                        maxlength="3" class="materialize-textarea validate" required>
-                        {{- recipe.prep_time -}}
-                    </textarea>
+                    <i class="fa-solid fa-utensils prefix grey-text text-lighten-1"></i>
+                    <input id="prep_time" name="prep_time" minlength="1" maxlength="50"
+                        value="{{ recipe.prep_time }}" type="text" class="validate" required>
                     <label for="prep_time">Prep Time</label>
                 </div>
             </div>
-            <!-- cook time -->
+
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
-                    <input id="recipe_cooking_time" name="recipe_cooking_time" minlength="1"
-                        maxlength="3" class="materialize-textarea validate" required>
-                        {{- recipe.cooking_time -}}
-                    </textarea>
+                    <i class="fa-regular fa-clock prefix red-text text-accent-4"></i>
+                    <input id="cooking_time" name="cooking_time" minlength="1" maxlength="50"
+                        value="{{ recipe.cooking_time }}" type="text" class="validate" required>
                     <label for="cooking_time">Cooking Time</label>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fa-solid fa-users-line prefix teal-text text-darken-2"></i>
+                    <input id="serves" name="serves" minlength="1" maxlength="50"
+                        value="{{ recipe.serves }}" type="text" class="validate" required>
+                    <label for="serves">Serves</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fa-solid fa-cookie-bite prefix brown-text text-lighten-2"></i>
+                    <input id="calories_per_serving" name="calories_per_serving" minlength="1" maxlength="50"
+                        value="{{ recipe.calories_per_serving }}" type="text" class="validate" required>
+                    <label for="calories_per_serving">Calories</label>
+                </div>
+            </div>
+
             <!-- is vegetarian toggle -->
 			<div class="row">
 				<div class="input-field col s12">
 					<div class="switch">
-                        <i class="fas fa-exclamation-circle prefix light-blue-text text-darken-4"></i>
+                        <i class="fa-solid fa-leaf prefix green-text text-darken-4"></i>
 						<label for="is_vegetarian">
                             {% if recipe.is_vegetarian == "on" %}
                                 <input type="checkbox" id="is_vegetarian" name="is_vegetarian" checked>
@@ -100,7 +114,7 @@
                         Cancel <i class="fas fa-times-circle right"></i>
                     </a>
                     <button type="submit" class="btn-large light-blue darken-1 text-shadow">
-                        Edit Task <i class="fas fa-edit right"></i>
+                       Confirm Recipe Changes <i class="fas fa-edit right"></i>
                     </button>
                 </div>
             </div>
