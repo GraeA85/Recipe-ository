@@ -154,3 +154,42 @@ h6 {
     padding-top: 4px;
     padding-bottom: 4px;
   }
+
+  .string-to-array ul:not(.browser-default)>li {
+    list-style-type: circle;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+  
+  .string-to-array ul:not(.browser-default) {
+    padding-left: 40px;
+  }
+  
+  ol li {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  .recipe-buttons {
+    margin-top: auto;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.btn-floating:hover,
+.btn-black,
+.gather-colour:hover {
+    background-color: #3e3d43;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.icon-padding {
+    padding-left: 4px;
+}
+
+.icon-padding-right {
+    padding-right: 4px;
+}

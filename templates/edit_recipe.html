@@ -22,7 +22,7 @@
 					<label for="recipe_category">Recipe Category</label>
 				</div>
 			</div>
-            <!-- task name -->
+            <!-- recipe name -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
@@ -31,27 +31,51 @@
                     <label for="recipe_name">Recipe Name</label>
                 </div>
             </div>
-            <!-- task description -->
+            <!-- recipe ingredients -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
-                    <textarea id="recipe_description" name="recipe_description" minlength="5"
+                    <textarea id="recipe_ingredients" name="recipe_ingredients" minlength="5"
                         maxlength="200" class="materialize-textarea validate" required>
-                        {{- recipe.recipe_description -}}
+                        {{- recipe.ingredients -}}
                     </textarea>
-                    <label for="recipe_description">Recipe Description</label>
+                    <label for="ingredients">Ingredients</label>
                 </div>
             </div>
-            <!-- due date picker -->
+            <!-- recipe instructions -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-calendar-alt prefix light-blue-text text-darken-4"></i>
-                    <input id="date_created" name="date_created" type="text"
-                        value="{{ recipe.date_created }}" class="datepicker validate" required>
-                    <label for="date_created">Date Created</label>
+                    <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
+                    <textarea id="recipe_instructions" name="recipe_instructions" minlength="5"
+                        maxlength="200" class="materialize-textarea validate" required>
+                        {{- recipe.instructions -}}
+                    </textarea>
+                    <label for="instructions">Instructions</label>
                 </div>
             </div>
-            <!-- is urgent toggle -->
+            <!-- prep time -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
+                    <input id="recipe_prep_time" name="recipe_prep_time" minlength="1"
+                        maxlength="3" class="materialize-textarea validate" required>
+                        {{- recipe.prep_time -}}
+                    </textarea>
+                    <label for="prep_time">Prep Time</label>
+                </div>
+            </div>
+            <!-- cook time -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
+                    <input id="recipe_cooking_time" name="recipe_cooking_time" minlength="1"
+                        maxlength="3" class="materialize-textarea validate" required>
+                        {{- recipe.cooking_time -}}
+                    </textarea>
+                    <label for="cooking_time">Cooking Time</label>
+                </div>
+            </div>
+            <!-- is vegetarian toggle -->
 			<div class="row">
 				<div class="input-field col s12">
 					<div class="switch">
@@ -63,7 +87,7 @@
                                 <input type="checkbox" id="is_vegetarian" name="is_vegetarian">
                             {% endif %}
                             <span class="lever"></span>
-                            Is Urgent
+                            Vegetarian recipe
                         </label>
 					</div>
 				</div>

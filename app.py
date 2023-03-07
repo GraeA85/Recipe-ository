@@ -49,6 +49,23 @@ def meal_plans():
     return render_template("meal_plans.html")
 
 
+def format_string_to_list(user_input, has_comma_separator=True):
+    """Formats user input into arrays for storing in db
+    Used for submit recipe and edit recipe
+    """
+    if has_comma_separator:
+        # for use with comma seperated entries
+        # also replaces new lines in case values C+V in
+        input_remove_new_lines = user_input.replace("\r\n", ",")
+        input_list = input_remove_new_lines.split(",")
+    else:
+        # for use with new line seperated entries
+        input_list = user_input.split("\r\n")
+    # remove trailing spaces
+    input_list_stripped = [i.lstrip() for i in input_list]
+    return input_list_stripped
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -103,23 +120,6 @@ def login():
     return render_template("login.html")
 
 
-def format_string_to_list(user_input, has_comma_separator=True):
-    """Formats user input into arrays for storing in db
-    Used for submit recipe and edit recipe
-    """
-    if has_comma_separator:
-        # for use with comma seperated entries
-        # also replaces new lines in case values C+V in
-        input_remove_new_lines = user_input.replace("\r\n", ",")
-        input_list = input_remove_new_lines.split(",")
-    else:
-        # for use with new line seperated entries
-        input_list = user_input.split("\r\n")
-    # remove trailing spaces
-    input_list_stripped = [i.lstrip() for i in input_list]
-    return input_list_stripped
-
-
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
@@ -159,10 +159,10 @@ def add_recipe():
             "recipe_name": request.form.get("recipe_name"),
             "ingredients": ingredients_list,
             "instructions": instructions_list,
-            "prep time": request.form.get("prep_time"),
-            "cooking time": request.form.get("cooking_time"),
+            "prep_time": request.form.get("prep_time"),
+            "cooking_time": request.form.get("cooking_time"),
             "serves": request.form.get("serves"),
-            "calories per serving": request.form.get("calories"),
+            "calories_per_serving": request.form.get("calories_per_serving"),
             "is_vegetarian": is_vegetarian,
             "created_by": session["user"],
                 }
@@ -185,10 +185,10 @@ def edit_recipe(recipe_id):
             "recipe_name": request.form.get("recipe_name"),
             "ingredients": ingredients,
             "instructions": instructions,
-            "prep time": request.form.get("prep_time"),
-            "cooking time": request.form.get("cooking_time"),
+            "prep_time": request.form.get("prep_time"),
+            "cooking_time": request.form.get("cooking_time"),
             "serves": request.form.get("serves"),
-            "calories per serving": request.form.get("calories"),
+            "calories_per_serving": request.form.get("calories_per_serving"),
             "is_vegetarian": is_vegetarian,
             "created_by": session["user"],
             "timestamp": datetime.datetime.utcnow()

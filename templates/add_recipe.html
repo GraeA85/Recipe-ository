@@ -47,25 +47,25 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fa-solid fa-utensils prefix grey-text text-lighten-1"></i>
-                    <input id="prep_time" name="prep_time" minlength="5" maxlength="50"
+                    <input id="prep_time" name="prep_time" minlength="1" maxlength="50"
                         type="text" class="validate" required>
-                    <label for="prep_time">Prep time</label>
+                    <label for="prep_time">Prep time (minutes)</label>
                 </div>
             </div>
             <!-- Cook time -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fa-regular fa-clock prefix red-text text-accent-4"></i>
-                    <input id="cook_time" name="cook_time" minlength="5" maxlength="50"
+                    <input id="cooking_time" name="cooking_time" minlength="1" maxlength="50"
                         type="text" class="validate" required>
-                    <label for="cook_time">Cooking time</label>
+                    <label for="cooking_time">Cooking time (Minutes)</label>
                 </div>
             </div>
             <!-- Recipe serves -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fa-solid fa-users-line prefix teal-text text-darken-2"></i>
-                    <input id="serves" name="serves" minlength="5" maxlength="50"
+                    <input id="serves" name="serves" minlength="1" maxlength="50"
                         type="text" class="validate" required>
                     <label for="serves">Serves (people)</label>
                 </div>
@@ -74,9 +74,9 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fa-solid fa-cookie-bite prefix brown-text text-lighten-2"></i>
-                    <input id="calories" name="calories" minlength="5" maxlength="50"
+                    <input id="calories_per_serving" name="calories_per_serving" minlength="2" maxlength="50"
                         type="text" class="validate" required>
-                    <label for="calories">Calories per serving</label>
+                    <label for="calories_per_serving">Calories per serving (kcal)</label>
                 </div>
             </div>
             <!-- is vegetarian toggle -->
