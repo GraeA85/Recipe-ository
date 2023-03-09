@@ -73,30 +73,14 @@ body {
     flex: 1;
 }
 
-/*cuisine cards*/
-.card.cuisine-card {
+.recipe-image {
     height: 200px;
-}
-
-.card-image-url {
-    height: 175px;
-}
-
-/*Hidden code displayed on colour top on card*/
-.image-url {
-    display: none;
+    object-fit: cover;
+       
 }
 
 .card-preview {
   padding: 4px 0 4px 0;
-}
-
-/*Default image if no image URL is supplied*/
-.holding-image {
-    background-image : url('../images/food-display.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
 }
 
 @media only screen and (min-width: 1000px)  {
@@ -196,4 +180,12 @@ h6 {
 
 .icon-padding-right {
     padding-right: 4px;
+}
+
+#recipe_ingredients {
+    white-space: pre-wrap;
+}
+
+#recipe_instructions {
+    white-space: pre-wrap;
 }

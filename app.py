@@ -55,7 +55,7 @@ def format_string_to_list(user_input, has_comma_separator=True):
     """
     if has_comma_separator:
         # for use with comma seperated entries
-        # also replaces new lines in case values C+V in
+        # also replaces new lines in case values
         input_remove_new_lines = user_input.replace("\r\n", ",")
         input_list = input_remove_new_lines.split(",")
     else:
@@ -153,7 +153,6 @@ def add_recipe():
         instructions_list = format_string_to_list(
             instructions_string, False)
 
-        is_vegetarian = "on" if request.form.get("is_vegetarian") else "off"
         recipe = {
             "recipe_category": request.form.get("recipe_category"),
             "recipe_name": request.form.get("recipe_name"),
@@ -163,7 +162,7 @@ def add_recipe():
             "cooking_time": request.form.get("cooking_time"),
             "serves": request.form.get("serves"),
             "calories_per_serving": request.form.get("calories_per_serving"),
-            "is_vegetarian": is_vegetarian,
+            "Image URL": request.form.get("recipe.img_url"),
             "created_by": session["user"],
                 }
         mongo.db.recipes.insert_one(recipe)
@@ -179,20 +178,29 @@ def add_recipe():
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     if request.method == "POST":
-        is_vegetarian = "on" if request.form.get("is_vegetarian") else "off"
-        submit = {
+
+        # Turns user data into an array to be stored in db
+        # Comma seperated entry
+        ingredients_string = request.form.get("ingredients")
+        ingredients_list = format_string_to_list(ingredients_string)
+        # New line seperated entry
+        instructions_string = request.form.get("instructions")
+        instructions_list = format_string_to_list(
+            instructions_string, False)
+
+        edit = {
             "recipe_category": request.form.get("recipe_category"),
             "recipe_name": request.form.get("recipe_name"),
-            "ingredients": ingredients,
-            "instructions": instructions,
+            "ingredients": ingredients_list,
+            "instructions": instructions_list,
             "prep_time": request.form.get("prep_time"),
             "cooking_time": request.form.get("cooking_time"),
             "serves": request.form.get("serves"),
             "calories_per_serving": request.form.get("calories_per_serving"),
-            "is_vegetarian": is_vegetarian,
+            "Image URL": request.form.get("recipe.img_url"),
             "created_by": session["user"],
-            "timestamp": datetime.datetime.utcnow()
         }
+
         mongo.db.recipes.replace_one({"_id": ObjectId(recipe_id)}, submit)
         flash("Recipe Successfully Updated")
 
