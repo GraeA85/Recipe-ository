@@ -57,15 +57,20 @@
                         <p><b>Prep time:</b> {{recipe.prep_time}} minutes</p>
                         <p><b>Cooking time:</b> {{recipe.cooking_time}} minutes</p>
                         <p><b>Calories per serving:</b> {{recipe.calories_per_serving}} Kcal</p>
-                        <h6><b>Ingredients</b></h6>
-                        <div class="string-to-array">{% for ingredient in recipe.ingredients %}
-                            <ul><li>{{ ingredient }}</li></ul>{% endfor %}
-                            </div>
-
-                        <h6><b>Steps:</b></h6>
-                        <div class="steps-string-to-array">{% for instruction in recipe.instructions %}
-                            <ul><li>{{ instruction }}</li></ul>{% endfor %}
-                            </div>
+                        <p><b>Recipe Ingredients:</b></p>
+                        <ul>
+                            {% for ingredient in recipe.recipe_ingredients.splitlines() %}
+                                <li class="d-flex">{{ ingredient }}</li><br>
+                            {% endfor %}
+                        </ul>
+                        
+                        <p><b>Recipe Instructions:</b></p>    
+                        <ul>
+                            {% for instruction in recipe.recipe_instructions.splitlines() %}
+                                <li class="d-flex">{{ instruction }}</li><br>
+                            {% endfor %}
+                        </ul>
+                        
                         </div>
                         </div>
             </div>

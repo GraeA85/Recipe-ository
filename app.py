@@ -49,23 +49,6 @@ def meal_plans():
     return render_template("meal_plans.html")
 
 
-def format_string_to_list(user_input, has_comma_separator=True):
-    """Formats user input into arrays for storing in db
-    Used for submit recipe and edit recipe
-    """
-    if has_comma_separator:
-        # for use with comma seperated entries
-        # also replaces new lines in case values
-        input_remove_new_lines = user_input.replace("\r\n", ",")
-        input_list = input_remove_new_lines.split(",")
-    else:
-        # for use with new line seperated entries
-        input_list = user_input.split("\r\n")
-    # remove trailing spaces
-    input_list_stripped = [i.lstrip() for i in input_list]
-    return input_list_stripped
-
-
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -106,7 +89,7 @@ def login():
                         flash("Welcome, {}".format(
                             request.form.get("username")))
                         return redirect(url_for(
-                            "profile", username=session["user"]))
+                            "index", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -144,25 +127,19 @@ def logout():
 def add_recipe():
     if request.method == "POST":
 
-        # Turns user data into an array to be stored in db
-        # Comma seperated entry
-        ingredients_string = request.form.get("ingredients")
-        ingredients_list = format_string_to_list(ingredients_string)
-        # New line seperated entry
-        instructions_string = request.form.get("instructions")
-        instructions_list = format_string_to_list(
-            instructions_string, False)
+        ingredients = request.form.get("recipe_ingredients")
+        instructions = request.form.get("recipe_instructions")
 
         recipe = {
             "recipe_category": request.form.get("recipe_category"),
             "recipe_name": request.form.get("recipe_name"),
-            "ingredients": ingredients_list,
-            "instructions": instructions_list,
+            "recipe_ingredients": ingredients,
+            "recipe_instructions": instructions,
             "prep_time": request.form.get("prep_time"),
             "cooking_time": request.form.get("cooking_time"),
             "serves": request.form.get("serves"),
             "calories_per_serving": request.form.get("calories_per_serving"),
-            "Image URL": request.form.get("recipe.img_url"),
+            "img_url": request.form.get("img_url"),
             "created_by": session["user"],
                 }
         mongo.db.recipes.insert_one(recipe)
@@ -179,30 +156,25 @@ def add_recipe():
 def edit_recipe(recipe_id):
     if request.method == "POST":
 
-        # Turns user data into an array to be stored in db
-        # Comma seperated entry
-        ingredients_string = request.form.get("ingredients")
-        ingredients_list = format_string_to_list(ingredients_string)
-        # New line seperated entry
-        instructions_string = request.form.get("instructions")
-        instructions_list = format_string_to_list(
-            instructions_string, False)
+        ingredients = request.form.get("recipe_ingredients")
+        instructions = request.form.get("recipe_instructions")
 
         edit = {
             "recipe_category": request.form.get("recipe_category"),
             "recipe_name": request.form.get("recipe_name"),
-            "ingredients": ingredients_list,
-            "instructions": instructions_list,
+            "recipe_ingredients": ingredients,
+            "recipe_instructions": instructions,
             "prep_time": request.form.get("prep_time"),
             "cooking_time": request.form.get("cooking_time"),
             "serves": request.form.get("serves"),
             "calories_per_serving": request.form.get("calories_per_serving"),
-            "Image URL": request.form.get("recipe.img_url"),
+            "img_url": request.form.get("img_url"),
             "created_by": session["user"],
         }
 
-        mongo.db.recipes.replace_one({"_id": ObjectId(recipe_id)}, submit)
+        mongo.db.recipes.replace_one({"_id": ObjectId(recipe_id)}, edit)
         flash("Recipe Successfully Updated")
+        return redirect(url_for("get_recipes"))
 
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     recipe_categories = mongo.db.recipe_categories.find().sort("recipe_category", 1)
