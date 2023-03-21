@@ -28,8 +28,7 @@ def get_recipes():
 @app.route("/")
 @app.route("/index")
 def index():
-    recipes = list(mongo.db.recipes.find())
-    return render_template("index.html", recipes=recipes)
+    return render_template("index.html")
 
 
 @app.route("/search", methods=["GET", "POST"])
