@@ -19,16 +19,16 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
+@app.route("/index")
+def index():
+    return render_template("index.html")
+
+
+@app.route("/")
 @app.route("/get_recipes")
 def get_recipes():
     recipes = list(mongo.db.recipes.find())
     return render_template("recipes.html", recipes=recipes)
-
-
-@app.route("/")
-@app.route("/index")
-def index():
-    return render_template("index.html")
 
 
 @app.route("/search", methods=["GET", "POST"])
