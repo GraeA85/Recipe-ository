@@ -107,6 +107,10 @@ body {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
+.card-title {
+    font-weight: bolder; 
+}
+
 body {
     display: flex;
     min-height: 100vh;
