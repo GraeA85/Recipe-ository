@@ -56,8 +56,8 @@ body {
 }
 
 .three-across {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 20px;
+   
 }
 
 .three-across i {
@@ -208,5 +208,13 @@ h6 {
 
 .btn {
     font-family: 'Poiret One' !important;
+}
+
+.index-text {
+    font-family: 'Edu NSW ACT Foundation', cursive;
+    font-weight: 400;
+    font-size:x-large;
+    text-align: center;
+    margin-top: 40px;
 }
 

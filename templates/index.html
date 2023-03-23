@@ -4,8 +4,8 @@
 <div class="jumbotron" title="Westhill Fitness - Shred">
     <div class="jumbatron-overlay"></div>
     <div class="jumbatron-content">
-        <h2 class="page-title-responsive">The Shred Recipes</h2>
-        <h3 class="page-subtitle">food plans and shopping lists</h3>
+        <h2 class="page-title-responsive">Westhill Fitness Fortnight-Shred</h2>
+        <h3 class="page-subtitle">Meal plans, shopping lists and recipes</h3>
         {% if session.user %}
         <a href="{{ url_for('get_recipes') }}" class="btn waves-effect waves-light gather-colour btn-large">View recipes in the shred meal plan</a>
         {% else %}
@@ -14,7 +14,13 @@
     </div>
 </div>
 
+
+
 <div class="container">
+    <div><p class="index-text">Welcome to the Westhill Fitness two-week Shred. Whether you're wanting to lose weight or get back on track, our two-week shred is an excellent place to start. It's guaranteed to have you looking slimmer and feeling better in yourself.
+        The shred works best when combined with our exercise classes and morning bootcamps but you'll feel better in yourself regardless. Please ensure you have your shopping list items in time for the start of the shred. <br><br>
+        Remember - you can contribute recipes for our next shred - if your recipe is chosen, you will be rewarded with a weeks free bootcamp sessions!
+    </p></div>
         <div class="row three-across">
             <div class="col s12 m6 l4 center-align">
                 <div class="card-panel">
@@ -42,11 +48,10 @@
                 <h4 class="page-title orange-text">Contribute</h4>
                 <p>Contribute Recipes for our next shred</p>
                 {% if session.user %}
-                <a href="{{ url_for('get_recipes') }}" class="btn waves-effect waves-light gather-colour">Contribute and see submitted Recipes</a>
+                <a href="{{ url_for('get_recipes') }}" class="btn waves-effect waves-light gather-colour">Contribute and see Current Recipes</a>
                 {% endif %}
             </div>
             </div>
     </div>
-
-   
+       
 {% endblock %}
