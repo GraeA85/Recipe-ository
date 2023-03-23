@@ -192,3 +192,17 @@ h6 {
 #recipe_instructions {
     white-space: pre-wrap;
 }
+
+.soon {
+    font-size: xx-large;
+    text-align: center;
+}
+
+.page-subtitle, .page-title-responsive {
+    font-family: 'Edu NSW ACT Foundation', cursive;
+}
+
+.btn {
+    font-family: 'Poiret One' !important;
+}
+
