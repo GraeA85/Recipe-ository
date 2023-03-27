@@ -491,27 +491,20 @@ You will need to deploy the application using Heroku.
 
 - Code Institute: Task Manager walkthrough product was used as the basis of this website with further added functionality and custom CSS styling throughout.
 
-- Code Institute: I referred to lessons and source code from Code Institute's Web Application Development course. I sourced the User Authentification and Search bar functionality from the Task Manager Walk Through Project.
-
 - Stack Overflow: I referred to Stack Overflow articles throughout the project. Mainly used for the storage of the recipe ingredients and instructions - jinja function.
 
-- W3Schools: I referred to guides on [Python MongoDB](https://www.w3schools.com/python/python_mongodb_getstarted.asp)
+- Slack: Many users ran into similar issues during their projects and the information proved invaluable during the creation of my project.
 
-- Geekflare: I referred to this walkthrough on [Python Unit Testing](https://geekflare.com/unit-testing-with-python-unittest/).
-
-- Documentation. I referred to this documentation provided by [Python](https://docs.python.org/3/library/exceptions.html), [Jest](https://jestjs.io/docs/getting-started), [MongoDB](https://www.mongodb.com/docs/manual/reference/method/ObjectId.valueOf/) amongst others.
+- Documentation:  [Python](https://docs.python.org/3/library/exceptions.html), [Jest](https://jestjs.io/docs/getting-started), [MongoDB](https://www.mongodb.com/docs/manual/reference/method/ObjectId.valueOf/), [Jinja](https://jinja.palletsprojects.com/en/3.1.x/)
 
 ## Content
 
 East Coast Fitness Shred Cookbook for recipes, meal plans and shopping lists were used for the bulk of the website content.
 
-## Media
-
-
 
 ## Acknowledgements
 
-
+Thank you to all my users who tested the website and highlighted any issues/bugs to me. 
 
 Please note this is a personal project. This website is purely for the sake of the developer's portfolio and not for public consumption.
 
