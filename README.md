@@ -1,6 +1,6 @@
 # Westhill Fitness - Two Week Shred Website
 
-## Milestone Project 3 - Backend Development
+## Milestone Project 3 - Back End Development
 
 <h2 align="center"><img src="./static/images/amiresponsive.jpg"></h2>
 
