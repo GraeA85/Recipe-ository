@@ -264,7 +264,7 @@ be a good basis for a website, allowing users to access their shopping list and 
 ### Recipe form considerations
 <br>
 
-- It was difficult to get the right balance between making it easy for users to submit recipes, and making sure the recipes were well presented on the website.
+- It was quite challenging to get the right balance between user friendliness, and making sure the recipes were well presented on the website correctly.
 
 - I experimented with storing the ingredients and instructions in an array rather than a string on mongoDB, however this proved too difficult when it came to editing a recipe and displaying correctly.
 
@@ -476,7 +476,7 @@ You will need to deploy the application using Heroku.
 10. Deploy your project by going to the Deploy tab and choose 'Connect to Github'
 11. Find your repository name and select Connect.
 12. To connect your Heroku database, go to 'More' in the top right and select run console. Enter ```python3``` to access the python intepreter.
-13. Then type ```From gather import db```. Then type ```db.create_all()```. You can then exit the console.
+13. Then type ```From recipe-ository import db```. Then type ```db.create_all()```. You can then exit the console.
 
 # Credits
 
