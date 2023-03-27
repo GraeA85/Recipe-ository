@@ -370,25 +370,25 @@ be a good basis for a website, allowing users to access their shopping list and 
 ## Frameworks Libraries and Programs
 
 - [Heroku](https://id.heroku.com/login)
-  - Heroku is the deployment source I used for this project. I'm also using it for the Postgres relational database
+  - Heroku is the deployment source I used for this project. It is linked to github to deploy automatically when changes are made.
 
 - [MongoDB](https://www.mongodb.com/)
-    - I'm using MongoDB for my non-relational database.
+    - I'm using MongoDB as the back-end database.
 
 - [Flask](https://flask.palletsprojects.com/en/2.2.x/templating/)
-  - Templating language I've used with Python to add logic to my html templates.
+  - Templating language used to add logic to my html templates.
 
 - [Jinja](https://jinja.palletsprojects.com/en/3.0.x/)
-  - Templating language I've used with Python to add logic to my html templates.
+  - Templating language used to add logic to my html templates.
 
 - [Materialize CSS](https://materializecss.com/)
   - Front-end library with HTML, CSS and Javascript based components. I used Nav bar, Cards, Buttons and Forms.
 
 - [Google Fonts](https://fonts.google.com/)
-  - Two fonts are imported from google fonts.
+  - Two fonts are imported from google fonts, Poiret One and Edu.
   
 - [Font awesome](https://fontawesome.com/)
-  - I used icons from font awesome on buttons.
+  - I used icons from font awesome on buttons and recipe cards throughout the site.
 
 - [Github](https://github.com/)
   - Github was used to create and store the project repository.
@@ -402,8 +402,8 @@ be a good basis for a website, allowing users to access their shopping list and 
 - [Techsini](https://techsini.com/multi-mockup/)
   - Techsini was used to help check responsiveness and take screenshots of the page at different screen sizes.
 
-- [Google Chrome Dev Tools](https://developer.chrome.com/docs/devtools/)
-  - Google Chrome's Dev Tools were used while building the project to test responsiveness and for debugging.
+- [Microsoft Edge](https://developer.chrome.com/docs/devtools/)
+  - Edge's Dev Tools were used while building the project to test responsiveness and for debugging.
 
 - [dbdiagram](https://dbdiagram.io/)
   - Tool used to mock up database structure diagram.
