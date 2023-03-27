@@ -1,100 +1,102 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="light-blue-text text-darken-4 center-align">Add Recipe</h3>
+<h3 class="light-blue-text text-darken-4 center-align">Add Recipe</h3>
 
-    <div class="row card-panel grey lighten-5" id="add-card">
-        <form class="col s12" method="POST" action="{{ url_for('add_recipe') }}">
-            <!-- category selection -->
-			<div class="row">
-				<div class="input-field col s12">
-                    <i class="fas fa-folder-open prefix orange-text text-darken-4"></i>
-					<select id="recipe_category" name="recipe_category" class="validate" required>
-                        <option value="" disabled selected>Choose Recipe Category</option>
-                        {% for recipe_category in recipe_categories %}
-                            <option value="{{ recipe_category.recipe_category }}">{{ recipe_category.recipe_category }}</option>
-                        {% endfor %}
-                    </select>
-					<label for="recipe_category">Recipe Category</label>
-				</div>
-			</div>
-            <!-- recipe name -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-pencil-alt prefix green-text text-lighten-1"></i>
-                    <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50"
-                        type="text" class="validate" required>
-                    <label for="recipe_name">Recipe Name</label>
-                </div>
+<div class="row card-panel grey lighten-5" id="add-card">
+    <form class="col s12" method="POST" action="{{ url_for('add_recipe') }}">
+        <!-- category selection -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-folder-open prefix orange-text text-darken-4"></i>
+                <select id="recipe_category" name="recipe_category" class="validate" required>
+                    <option value="" disabled selected>Choose Recipe Category</option>
+                    {% for recipe_category in recipe_categories %}
+                    <option value="{{ recipe_category.recipe_category }}">{{ recipe_category.recipe_category }}</option>
+                    {% endfor %}
+                </select>
+                <label for="recipe_category">Recipe Category</label>
             </div>
-            <!-- Recipe ingredients -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fa-solid fa-list-check prefix lime-text text-darken-4"></i>
-                    <textarea id="recipe_ingredients" name="recipe_ingredients" class="materialize-textarea" placeholder="Use a new line for each ingredient" required></textarea>
-                    <label for="recipe_ingredients">Recipe Ingredients</label>
-                </div>
+        </div>
+        <!-- recipe name -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-pencil-alt prefix green-text text-lighten-1"></i>
+                <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" type="text" class="validate"
+                    required>
+                <label for="recipe_name">Recipe Name</label>
             </div>
-            <!-- Recipe instructions -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fa-solid fa-list-check prefix lime-text text-darken-4"></i>
-                    <textarea id="recipe_instructions" name="recipe_instructions" class="materialize-textarea" placeholder="Use a new line to seperate steps" required></textarea>
-                    <label for="recipe_instructions">Recipe Instructions</label>
-                </div>
+        </div>
+        <!-- Recipe ingredients -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fa-solid fa-list-check prefix lime-text text-darken-4"></i>
+                <textarea id="recipe_ingredients" name="recipe_ingredients" class="materialize-textarea"
+                    placeholder="Use a new line for each ingredient" required></textarea>
+                <label for="recipe_ingredients">Recipe Ingredients</label>
             </div>
-            <!-- Prep time -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fa-solid fa-utensils prefix grey-text text-lighten-1"></i>
-                    <input id="prep_time" name="prep_time" minlength="1" maxlength="50"
-                        type="text" class="validate" required>
-                    <label for="prep_time">Prep time (minutes)</label>
-                </div>
+        </div>
+        <!-- Recipe instructions -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fa-solid fa-list-check prefix lime-text text-darken-4"></i>
+                <textarea id="recipe_instructions" name="recipe_instructions" class="materialize-textarea"
+                    placeholder="Use a new line to seperate steps" required></textarea>
+                <label for="recipe_instructions">Recipe Instructions</label>
             </div>
-            <!-- Cook time -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fa-regular fa-clock prefix red-text text-accent-4"></i>
-                    <input id="cooking_time" name="cooking_time" minlength="1" maxlength="50"
-                        type="text" class="validate" required>
-                    <label for="cooking_time">Cooking time (Minutes)</label>
-                </div>
+        </div>
+        <!-- Prep time -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fa-solid fa-utensils prefix grey-text text-lighten-1"></i>
+                <input id="prep_time" name="prep_time" minlength="1" maxlength="50" type="text" class="validate"
+                    required>
+                <label for="prep_time">Prep time (minutes)</label>
             </div>
-            <!-- Recipe serves -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fa-solid fa-users-line prefix teal-text text-darken-2"></i>
-                    <input id="serves" name="serves" minlength="1" maxlength="50"
-                        type="text" class="validate" required>
-                    <label for="serves">Serves (people)</label>
-                </div>
+        </div>
+        <!-- Cook time -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fa-regular fa-clock prefix red-text text-accent-4"></i>
+                <input id="cooking_time" name="cooking_time" minlength="1" maxlength="50" type="text" class="validate"
+                    required>
+                <label for="cooking_time">Cooking time (Minutes)</label>
             </div>
-            <!-- calories -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fa-solid fa-cookie-bite prefix brown-text text-lighten-2"></i>
-                    <input id="calories_per_serving" name="calories_per_serving" minlength="2" maxlength="50"
-                        type="text" class="validate" required>
-                    <label for="calories_per_serving">Calories per serving (kcal)</label>
-                </div>
+        </div>
+        <!-- Recipe serves -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fa-solid fa-users-line prefix teal-text text-darken-2"></i>
+                <input id="serves" name="serves" minlength="1" maxlength="50" type="text" class="validate" required>
+                <label for="serves">Serves (people)</label>
             </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="img_url" name="img_url" type="text" class="validate">
-                    <label for="img_url">Image URL (please ensure URL ends in appropriate image format, .jpg, .png etc.)</label>
-                </div>
+        </div>
+        <!-- calories -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fa-solid fa-cookie-bite prefix brown-text text-lighten-2"></i>
+                <input id="calories_per_serving" name="calories_per_serving" minlength="2" maxlength="50" type="text"
+                    class="validate" required>
+                <label for="calories_per_serving">Calories per serving (kcal)</label>
             </div>
-            
-            <!-- submit button -->
-            <div class="row">
-                <div class="col s12 center-align">
-                    <button type="submit" class="btn-large teal darken-1 text-shadow">
-                        Add Recipe <i class="fa-solid fa-plate-wheat right"></i>
-                    </button>
-                </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="img_url" name="img_url" type="text" class="validate">
+                <label for="img_url">Image URL (please ensure URL ends in appropriate image format, .jpg, .png
+                    etc.)</label>
             </div>
-        </form>
-    </div>
+        </div>
+
+        <!-- submit button -->
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn-large teal darken-1 text-shadow">
+                    Add Recipe <i class="fa-solid fa-plate-wheat right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
 
 {% endblock %}
