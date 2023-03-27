@@ -376,7 +376,7 @@ be a good basis for a website, allowing users to access their shopping list and 
     - I'm using MongoDB as the back-end database.
 
 - [Flask](https://flask.palletsprojects.com/en/2.2.x/templating/)
-  - Templating language used to add logic to my html templates.
+  - Works with jinja and werkzeug to provide configurations and conventions.
 
 - [Jinja](https://jinja.palletsprojects.com/en/3.0.x/)
   - Templating language used to add logic to my html templates.
