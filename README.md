@@ -88,7 +88,7 @@ be a good basis for a website, allowing users to access their shopping list and 
 
 * As a returning user, I want recipes to include useful information such as a title, ingredient list, instructions broken down into steps, time to make, calorie count and an image of the food.
 
-* As a returning user, I want to be able to search for recipes, to make it quicker to find recipes with a certain word in their name, or by cuisine type (breakfast, snack or lunch/dinner)
+* As a returning user, I want to be able to search for recipes, to make it quicker to find recipes with a certain word in their name, or by recipe category (breakfast, snack or lunch/dinner)
  
 * As a returning user, I want to be able to search for recipes, to make it quicker to find recipes with a certain word in their name or category (breakfast/snack/lunch/dinner).
 
@@ -274,7 +274,7 @@ be a good basis for a website, allowing users to access their shopping list and 
 
 <br>
 
-## Manage Cuisines Page Features
+## Manage Recipe Categories Page Features
 
 <h2 align="center"><img src="./static/images/westhill-categories.jpg"></h2>
 
