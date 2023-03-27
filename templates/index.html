@@ -4,8 +4,9 @@
 <div class="jumbotron" title="Westhill Fitness - Shred">
     <div class="jumbatron-overlay"></div>
     <div class="jumbatron-content">
-        <h2 class="page-title-responsive">Westhill Fitness Fortnight-Shred</h2>
-        <h3 class="page-subtitle">Meal plans, shopping lists and recipes</h3>
+        <h2 class="page-title-responsive">Fortnight-Shred</h2>
+        <hr>
+        <h4 class="page-subtitle">Meal plans, shopping lists and recipes</h4>
         {% if session.user %}
         <a href="{{ url_for('get_recipes') }}" class="btn waves-effect waves-light gather-colour btn-large">View recipes in the shred meal plan</a>
         {% else %}

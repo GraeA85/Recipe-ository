@@ -207,7 +207,7 @@ be a good basis for a website, allowing users to access their shopping list and 
 
 <h2 align="center"><img src="./static/images/westhill-incorrect.jpg"></h2>
 
-- If incorrect log in details are provided, then a flash message informs the user that the Username and/or password is incorrect.
+- If incorrect log in details are provided, a flash message informs the user that the Username and/or password is incorrect.
 
 <br>
 
@@ -260,165 +260,95 @@ be a good basis for a website, allowing users to access their shopping list and 
 
 <h2 align="center"><img src="./static/images/westhill-edit.jpg"></h2>
 
-- If a user wishes to edit their recipe they will be taken back to the add recipe page with the form fields pre-populated with their previous entry. This is displayed in a list for easy editing. Once the editing is finished the user clicks the button to confirm. If no changes are required the user can click cancel editing to return to the recipe page.
+- If a user wishes to edit their recipe they will be taken back to the add recipe page with the form fields pre-populated with their previous entries. Once the editing is finished the user clicks the button to confirm. If no changes are required the user can click cancel editing to return to the recipe page.
 
-<h2 align="center"><img src="gather/static/readme/images/edit-recipe.jpg"></h2>
+<h2 align="center"><img src="./static/images/westhill-editflash.jpg"></h2>
 
-- The submit and edit recipe pages both feature forms and red submit buttons. The edit page also features a cancel button which directs the user back to to their My Recipes page.
-
-- Input fields include
-  - Recipe name (required - text - max 50 characters)
-  - Cuisine (selected from dropdown - required)
-  - Ingrediant list (required - text - comma seperated)
-  - Instructions (required - text - new line seperated)
-  - Difficulty (selected from dropdown - required)
-  - Duration in minutes (number - required)
-  - Serves (number - required)
-  - Image URL (text)
-  - Tags (required - text - max 50 character - comma seperated)
-  - URL (text)
-
-- All inputs are validated and feature labels
-
-- When a user goes to edit a recipe, the content appears in the relevant input fields.
-
-- If a recipe image URL is not provided, then a defualt colour swatch is used.
-
+- Once the changes are confirmed a flash message will display to the user back on the recipe page.
+<br><br>
 ### Recipe form considerations
+<br>
 
 - It was difficult to get the right balance between making it easy for users to submit recipes, and making sure the recipes were well presented on the website.
 
-- I decided that I wanted to store the Ingrediants List, Instructions and Tags as arrays in Mongo DB.
+- I experimented with storing the ingredients and instructions in an array rather than a string on mongoDB, however this proved too difficult when it came to editing a recipe and displaying correctly.
 
-- I decided the best way to do this was to make the user enter the Ingrediants List and Tags as comma seperated lists, and the Instructions and a new line seperated list.
+- Using information on slack and stack overflow, i found that it would be easier to store the instructions and ingredients as one string like the other fields, each on their own line. Using a method available within jinja, i used the .splitlines function which stores the recipe ingredients in a single string within mongoDB whilst also showing a user-friendly list when the user wanted to edit their recipe (each ingredient and instruction displays on a seperate line for easy editing).
 
-- This is because, while developing the site, I found it most convieant to copy and paste recipes in from other websites. That's why I decided to create single text-area inputs for the ingrediants list and instructions list, as opposed to making the user enter each item individually. 
+- Through testing I have found no issues with copy and pasting of ingredient lists and instructions which is a massive positive for user-friendliness on the site.
 
-- This solution is not ideal, as it leaves a lot of trust in the user to correctly input recipes, so that they are clear and legible to other users. I have increased speed and ease, at the cost of making the system fool-proof.
-
-- As the ingrediants list input is a text area, I have removed the ability to enter a new line, to encourage the user to use commas.
-
-- However, the user can still copy and paste text in as seperate lines into the ingrediants field instead of using commas. This feature was useful for development, however I have not made this apparent to the user so to the keep the form clear and simple. So I would consider removing this feature in a real-world application.
-
-## Favourite Recipes Page Features
-
-<h2 align="center"><img src="gather/static/readme/images/favourite-recipes.jpg"></h2>
-
-- This feature allows the user to add recipes to their My Favourites page. This would be useful if their is another user's recipe that they like, and would like to "bookmark" it so they can find it easily, and save them having to look through the Find Recipes page.
-
-- Users can also favourite their own recipe if they choose.
-
-- User's can favourite recipes simply by clicking the 'Favourite Recipe' button. Once a recipe is favourited, this is replaced by an 'Unfavourite recipe' button. Clicking this will remove the recipe from the User's favourites.
-
-<h2 align="center"><img src="gather/static/readme/images/no-user-favourites.jpg"></h2>
-
-- If the user has no favourite recipes, then a message appears to inform the user.
+<br>
 
 ## Manage Cuisines Page Features
 
-<h2 align="center"><img src="gather/static/readme/images/manage-cuisines-admin-view.jpg"></h2>
+<h2 align="center"><img src="./static/images/westhill-categories.jpg"></h2>
 
-- This page lists all the available cuisines in alphabetical order. It gives the admin user the option to add, edit or delete cuisines.
-
-<h2 align="center"><img src="gather/static/readme/images/non-admin-cuisines-flash-message.jpg"></h2>
-
-- This page is only visible to admin users. If a non-admin is logged in and tries to access this page or tries to access the submit, edit or delete a cuisine pages, they will see a flash message informing them and be redirected to the find recipes page.
-
-## Add/ Edit Cuisines Pages Features
-
-<h2 align="center"><img src="gather/static/readme/images/add-cuisine.jpg"></h2>
-
-<h2 align="center"><img src="gather/static/readme/images/edit-cuisine.jpg"></h2>
-
-- The add and edit cuisine pages feature a form with a single input field for Cuisine Name and a red submit button. The edit button also features a cancel button.
-
-<h2 align="center"><img src="gather/static/readme/images/exsisting-cuisine.jpg"></h2>
-
-- Each cuisine name must be unique, and is checked before commiting to the database. If the user enters an exsisting cuisine name, a flash message appears informing them.
-
-- Like the Manage Cuisines page, a flash message appears if a non-admin user tries to access this page.
-
-## Delete Recipe/ Cuisines Pages Features
-
-<h2 align="center"><img src="gather/static/readme/images/delete-recipe.jpg"></h2>
-
-<h2 align="center"><img src="gather/static/readme/images/delete-cuisine.jpg"></h2>
-
-- If a user clicks on a 'Delete Recipe' or 'Delete Cuisine', they will be taken to this page to confirm the deletion. This is extra step to stop users accidentally deleting things.
-
-- Cuisines are set up with a cascade delete effect. So any recipes with that cuisine will also be deleted. This is made clear on the delete cuisine page.
-
-- There is a cancel button on each page.
+- This page is available to admin accounts only. It allows admin to add/edit the recipe categories that are available for the recipes to be stored under. Similar to the adding and editing of recipes, flash messages will confirm to the admin when categories have been successfully added or edited.
 
 ## Error Handling
 
 - In most instances if there is an error, e.g. the recipe id in the page URL is changed, then the user will be redirected back to the Find Recipes page. Logged-out-users will be directed to the log in page, as they cannot access the Find Recipes page.
 
-- There is an unresolved bug if the page URL is changed on the edit or delete Cuisine page, then the Execption clause will not trigger. See the unresolved bug section.
-
-- If the user's session cookie deleted, then they will be logged out and unable to access logged-in features.
+- If the user's session cookie deleted, they will also be logged out and unable to access logged-in features.
 
 # Future Features
 
 ## User Experience Features 
+<br>
 
-### Filter by cuisine
+### Current day of Shred Recipes on Home page
 
-- The search functionality does not search by cuisine name as these are not stored in Mongo DB. I would also like to add a filter to the Find Recipes page that filters by cuisine name.
+- It would be good for the user experience to display each days recipes on the homepage underneath the current navigation cards. This would be coded to change the recipes on each day of the shred to allow the users quicker access to the appropriate recipes.
 
-### Tags are clickable and act as a filter
+### Seperate recipe pages for current shred recipes and user submitted
 
-- The tags are used within the search function so they are searchable. However they could be used in further ways, such as being clickable and showing other recipes with the same tag.
+- Currently, all recipes are stored on the same page. In the future it would be good for the user submitted recipes and the current meal plan recipes to be shown on different pages so users have less information to look at when it is not required.
 
-### More “Featured Collections”
+### Favourite Recipes
 
-- I feel the index page would be improved by having more featured collections such as Most Favourited or Fewest Ingrediants.
+- A future feature would allow users to 'favourite' recipes they like to use outside of the shred. These would be stored on a "my favourites" page or on their profile page.
 
-### Confirm delete modal rather than a page
+### Confirm delete of items
 
-- I feel a modal would be better here. I made a page for ease.
+- A confirm deletion button to prevent users accidently deleting recipes
 
-### Further improvements to submit/ edit recipe forms
+### Profile Page - weights
 
-- As explained in the Features section, I feel there is more I could do to improve the UX of inputting a recipe. For example, there could be a format button which would correctly format the user's input. Or a live preview so that the user can see how their input will look on the site.
+- The profile page is present, however it is currently marked with a coming soon. This page would allow the user to store their weights and measurements (which users typically record before and after the shred). It would record their weights before the shred began, after week one and at the end. This could then be used (with permission) to show a leaderboard of which users have lost the most weight during the shred.
 
-### Add a print recipe button to the View Recipe page
+### Profile page - images
 
-- I could add a print recipe button, which would open the page as a printable format in the printer dialog box.
-
-### Make a confirm password input 
-
-- This would help the user ensure they haven't made a typo in their desired password.
+- The ability for the users to upload and store their before and after body pictures, which is encouraged at each shred (the members are asked to take before and after photos to allow them to see the difference in their body shapes after the shred).
 
 ### Add edit/ delete user account functionality including reset password
 
 - This would allow the user to edit their username or password, or delete their account.
 
+### Add an authentication code when registering
+
+- The Shred is a paid-for service in Westhill Fitness. To be able to register an account the user must have an authentication code that they would recieve from the owners once they had paid for the shred. Without this code the user wouldn't be able to register for an account and access the content available. 
+
+- Alternitavely, add a feature that allows the website to take payment before being able to register for an account.
+
 ### Contact admin button
 
 - I could add a contact admin button, to notify admin if there is an error out of hours.
 
-### Add Private and Public comments
+### Food Shopping Links
 
-- Users could add private comments (e.g. their own notes from having tried making the recipe) and/or public comments to let other users know helpful tips or reviews.
+- Links to external supermarket websites for the shopping lists, which automatically put all required items in your shopping basket instantly, allowing the user to have the food delivered if desired.
 
-## Development Features
+### Links to Recipes from Meal Plan Site
 
-### Make recipe card snippet to reduce code repition
+- Users to be able to click through directly from the meal plan to each specified recipe.
 
-- As I have used the same Recipe Card format within multiple templates, I could refactor this code and use a "snippet" to reduce the number of times this code is repeated.
-
-### More detailed Try Except exception clauses
-
-- I would like to add more detailed exception clauses to my Try Except statements. I have used a catch-all clause for simplicty.
-
-### More Automated Testing
+### Automated Testing
 
 - I would like to add more automated tests for my Python and Javascript files. This would mean that developers who work on the website in the future can add new features and be sure they are not breaking the code.
 
 # Data Model
 
-- [View my Database structure in PDF form here](gather/static/readme/databases/gather-database-schema.pdf).
+- [View my Database structure in PDF form here](./static/images/Recipe-Store-Westhill-Fitness.pdf).
 
 # Technologies Used
 
@@ -431,6 +361,8 @@ be a good basis for a website, allowing users to access their shopping list and 
 - [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
 
 - [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
+
+- [PyMongo](https://pymongo.readthedocs.io/en/stable/)
 
 ## Frameworks Libraries and Programs
 
@@ -447,19 +379,13 @@ be a good basis for a website, allowing users to access their shopping list and 
   - Templating language I've used with Python to add logic to my html templates.
 
 - [Materialize CSS](https://materializecss.com/)
-  - Front-end library with HTML, CSS and Javascript based componants. I used features including Nav bar, Cards, Buttons and Forms.
-
-- [jQuery](https://jquery.com/)
-  - I used jQuery to add functionality to MaterialiseCSS componants.
+  - Front-end library with HTML, CSS and Javascript based components. I used Nav bar, Cards, Buttons and Forms.
 
 - [Google Fonts](https://fonts.google.com/)
   - Two fonts are imported from google fonts.
   
 - [Font awesome](https://fontawesome.com/)
   - I used icons from font awesome on buttons.
-
-- [Git](https://git-scm.com/)
-  - Git was used as a version control in the terminal.
 
 - [Github](https://github.com/)
   - Github was used to create and store the project repository.
@@ -473,27 +399,15 @@ be a good basis for a website, allowing users to access their shopping list and 
 - [Techsini](https://techsini.com/multi-mockup/)
   - Techsini was used to help check responsiveness and take screenshots of the page at different screen sizes.
 
-- [Adobe Photoshop](https://www.adobe.com/ie/products/photoshop.html)
-  - Photoshop was used to resize images for the website.
-
-- [TinyPNG](https://tinypng.com/)
-  - TinyPNG was used to compress images for a faster loading time.
-
-- [WebFormatter](https://webformatter.com/html)
-  - WebFormatter was used to help beautify the code.
-
 - [Google Chrome Dev Tools](https://developer.chrome.com/docs/devtools/)
   - Google Chrome's Dev Tools were used while building the project to test responsiveness and for debugging.
 
 - [dbdiagram](https://dbdiagram.io/)
   - Tool used to mock up database structure diagram.
 
-- [Unsplash](https://unsplash.com/)
-  - Unsplash was used to source the jumbatron imager.
-
 # Testing
 
-- Please refer [here](TESTING.md) for more information on testing of the Gather website
+- Please refer [here](TESTING.md) for more information on testing carried out
 
 # Deployment
 
@@ -512,7 +426,7 @@ Forks are used to propose changes to someone else's project or to use someone el
 
 To Fork a Github Repository:
 
-1. Log in to GitHub and go to the [GitHub Repository](https://github.com/Isabella-Mitchell/gather-recipe-website)
+1. Log in to GitHub and go to the GitHub Repository
 2. Locate the Fork button in the top-right corner of the page, click Fork.
 3. You should now have a copy of the original repository in your GitHub account.
 
@@ -522,7 +436,7 @@ You will now have a fork of the repository, but you don't have the files in that
 
 To make a local clone:
 
-1. Log in to GitHub and go to the [GitHub Repository](https://github.com/Isabella-Mitchell/gather-recipe-website)
+1. Log in to GitHub and go to the GitHub Repository
 2. Above the list of files, click  Code.
 3. To clone the repository using HTTPS, under "Clone with HTTPS", click the 'Copy' icon. To clone the repository using an SSH key, including a certificate issued by your organization's SSH certificate authority, click Use SSH, then click the 'Copy' icon. To clone a repository using GitHub CLI, click Use GitHub CLI, then click the 'Copy' icon.
 4. Open Git Bash.
@@ -537,7 +451,7 @@ $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
 
 ```
 $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
-> Cloning into `gather-recipe-website`...
+> Cloning into `website`...
 > remote: Counting objects: 10, done.
 > remote: Compressing objects: 100% (8/8), done.
 > remove: Total 10 (delta 1), reused 10 (delta 1)
@@ -575,11 +489,13 @@ You will need to deploy the application using Heroku.
 
 - Materalize CSS: I used this library throughout the project. Particularly for the nav bar, cards, forms and buttons.
 
+- Code Institute: Task Manager walkthrough product was used as the basis of this website with further added functionality and custom CSS styling throughout.
+
 - Code Institute: I referred to lessons and source code from Code Institute's Web Application Development course. I sourced the User Authentification and Search bar functionality from the Task Manager Walk Through Project.
 
-- Stack Overflow: I referred to Stack Overflow articles throughout the project. I used a line of code from this [Bug fix to stop testing export showing as error in browser article](https://stackoverflow.com/questions/66349868/jest-unit-testing-module-export-error-in-browser-console), [creating a UL from a JS array](https://stackoverflow.com/questions/11128700/create-a-ul-and-fill-it-based-on-a-passed-array) and [how to disable the enter key being used in a textarea](https://stackoverflow.com/questions/6714202/how-can-i-disable-the-enter-key-on-my-textarea).
+- Stack Overflow: I referred to Stack Overflow articles throughout the project. Mainly used for the storage of the recipe ingredients and instructions - jinja function.
 
-- W3Schools: I referred to guides on [Python MongoDB](https://www.w3schools.com/python/python_mongodb_getstarted.asp) amongst others.
+- W3Schools: I referred to guides on [Python MongoDB](https://www.w3schools.com/python/python_mongodb_getstarted.asp)
 
 - Geekflare: I referred to this walkthrough on [Python Unit Testing](https://geekflare.com/unit-testing-with-python-unittest/).
 
@@ -587,7 +503,7 @@ You will need to deploy the application using Heroku.
 
 ## Content
 
-- [BBC Good Food](https://www.bbcgoodfood.com/): I used this exisiting recipe platform to help me plan the user experience and features of the website. I also sourced many recipes from this website.
+East Coast Fitness Shred Cookbook for recipes, meal plans and shopping lists were used for the bulk of the website content.
 
 ## Media
 
