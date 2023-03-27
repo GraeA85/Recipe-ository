@@ -43,7 +43,7 @@ be a good basis for a website, allowing users to access their shopping list and 
   + [Find Recipes Page Features](#find-recipes-page-features)
   + [View Recipe Page Features](#view-recipe-page-features)
   + [Recipe page features](#recipes-page-features)
-  + [Shopping lists and Meal Plan Pages](#Shopping lists and Meal Plans)
+  + [Shopping lists and Meal Plan Pages](#Shopping-lists-and-Meal-Plans)
   + [Error Handling](#error-handling)
 - [Future Features](#future-features)
   + [User Experience Features](#user-experience-features)
@@ -280,6 +280,13 @@ be a good basis for a website, allowing users to access their shopping list and 
 <h2 align="center"><img src="./static/images/westhill-categories.jpg"></h2>
 
 - This page is available to admin accounts only. It allows admin to add/edit the recipe categories that are available for the recipes to be stored under. Similar to the adding and editing of recipes, flash messages will confirm to the admin when categories have been successfully added or edited.
+
+## Shopping lists and Meal Plan Pages
+
+<h2 align="center"><img src="./static/images/westhill-shoppinglist.jpg"></h2>
+<h2 align="center"><img src="./static/images/westhill-meal.jpg"></h2>
+
+- The shopping list and meal plan pages are just webpages for user information and have no current functionality. Future functions will be included on these pages (see below in future features section).
 
 ## Error Handling
 
