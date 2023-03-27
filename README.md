@@ -43,7 +43,7 @@ be a good basis for a website, allowing users to access their shopping list and 
   + [Find Recipes Page Features](#find-recipes-page-features)
   + [View Recipe Page Features](#view-recipe-page-features)
   + [Recipe page features](#recipes-page-features)
-  + [Shopping lists and Meal Plan Pages](#Shopping-lists-and-Meal-Plans)
+  + [Shopping lists and Meal Plan Pages](#shopping-lists-and-meal-plan-pages)
   + [Error Handling](#error-handling)
 - [Future Features](#future-features)
   + [User Experience Features](#user-experience-features)
