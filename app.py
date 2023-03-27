@@ -18,12 +18,14 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+# app route to display index.html page
 @app.route("/")
 @app.route("/index")
 def index():
     return render_template("index.html")
 
 
+# displays recipes.html when user is logged in
 @app.route("/")
 @app.route("/get_recipes")
 def get_recipes():
@@ -31,6 +33,7 @@ def get_recipes():
     return render_template("recipes.html", recipes=recipes)
 
 
+# function to allow users to search recipes, search index in mongodb
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
@@ -38,16 +41,19 @@ def search():
     return render_template("recipes.html", recipes=recipes)
 
 
+# displays the shopping list page extended from the base.html
 @app.route("/shopping_lists")
 def shopping_lists():
     return render_template("shopping_lists.html")
 
 
+# displays the meal plans page, extended from the base.html
 @app.route("/meal_plans")
 def meal_plans():
     return render_template("meal_plans.html")
 
 
+# function to allow user to register, and login, placing cookie in session
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -73,6 +79,8 @@ def register():
     return render_template("register.html")
 
 
+# function allows user to login, prompting if user does not exist
+# or incorrect password
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -102,6 +110,7 @@ def login():
     return render_template("login.html")
 
 
+# shows user profile, adding username to html
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
@@ -114,6 +123,7 @@ def profile(username):
     return redirect(url_for("login"))
 
 
+# function to allow user to logout
 @app.route("/logout")
 def logout():
     # remove user from session cookie
@@ -122,6 +132,8 @@ def logout():
     return redirect(url_for("login"))
 
 
+# function to add recipe using the webpage form - stores recipe
+# in mongodb database
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
     if request.method == "POST":
@@ -151,6 +163,8 @@ def add_recipe():
         "add_recipe.html", recipe_categories=recipe_categories)
 
 
+# function to allow editing of recipe - recalls recipe from mongodb database
+#  and pre-fills html page to allow editing
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     if request.method == "POST":
@@ -181,6 +195,7 @@ def edit_recipe(recipe_id):
         "edit_recipe.html", recipe=recipe, recipe_categories=recipe_categories)
 
 
+# function to allow deletion of recipe from website and database
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     mongo.db.recipes.delete_one({"_id": ObjectId(recipe_id)})
@@ -188,6 +203,8 @@ def delete_recipe(recipe_id):
     return redirect(url_for("get_recipes"))
 
 
+# function to show recipe categories
+#  (for admin only)
 @app.route("/get_recipes_categories")
 def get_recipe_categories():
     recipe_categories = list(mongo.db.recipe_categories.find().sort(
@@ -196,6 +213,7 @@ def get_recipe_categories():
         "recipe_categories.html", recipe_categories=recipe_categories)
 
 
+# function to add recipe category
 @app.route("/add_recipe_category", methods=["GET", "POST"])
 def add_recipe_category():
     if request.method == "POST":
@@ -226,6 +244,7 @@ def edit_recipe_category(recipe_category_id):
         "edit_recipe_category.html", recipe_category=recipe_category)
 
 
+# function to delete recipe category (Admin only)
 @app.route("/delete_recipe_category/<recipe_category_id>")
 def delete_recipe_category(recipe_category_id):
     mongo.db.recipe_categories.delete_one(
