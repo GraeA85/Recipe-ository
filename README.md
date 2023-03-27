@@ -10,11 +10,11 @@
 be a good basis for a website, allowing users to access their shopping list and meal plans on their mobile phones or computers - making it much easier to follow recipes in their kitchen or access shopping lists in the supermarket.
 
 
-* This is my Milestone Project 3 submission for Code Institute's Diploma in Web Application Development course. My website uses both relational and non-relational databases, features full CRUD functionality and is built using technologies that I have learnt including HTML, CSS, JavaScript, Python, Flask and PyMongo.
+* This is my Milestone Project 3 submission for Code Institute's Diploma in Web Application Development course. My website uses a backend database, features full CRUD functionality and is built using technologies that I have learnt including HTML, CSS, JavaScript, Python, Flask and PyMongo.
 
 ## Live Project
 
-[View the live project here.](https://recipe-ository.herokuapp.com//)
+[View the live project here.](https://recipe-ository.herokuapp.com/)
 
 ## Repository
 
