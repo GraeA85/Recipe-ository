@@ -4,7 +4,7 @@
 
 <h2 align="center"><img src="./static/images/amiresponsive.jpg"></h2>
 
-* The Westill Fitnes Shred website is designed to accompany a two-week fitness programme used by a local fitness company. The website allows users to access shopping lists, food plans and recipes, as well as contribute recipes for future shreds. It allows the user full CRUD functionality - users can create new recipes, which are stored in a backend database (mongodb), search and retrieve recipes on the website, edit/update their contributed recipes and also delete them if necessary.
+* The Westhill Fitnes Shred website is designed to accompany a two-week fitness programme used by a local fitness company. The website allows users to access shopping lists, food plans and recipes, as well as contribute recipes for future shreds. It allows the user full CRUD functionality - users can create new recipes, which are stored in a backend database (mongodb), search and retrieve recipes on the website, edit/update their contributed recipes and also delete them if necessary.
 
 * I got the idea for the website from a local fitness company that I have used to participate in a health shred. A health shred is designed to give you meal plans and exercises that should be used over a two week period. It is designed to help users lose weight. The local company which I have based the idea currently use paper plans/paper recipe books which are given to members. I decided this would
 be a good basis for a website, allowing users to access their shopping list and meal plans on their mobile phones or computers - making it much easier to follow recipes in their kitchen or access shopping lists in the supermarket.
