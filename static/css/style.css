@@ -87,6 +87,7 @@ body {
 #add-card {
     width: 25vw;
     margin-left: 36.5vw;
+    font-family: 'Edu NSW ACT Foundation', cursive;
 }
 #edit-card {
     width: 25vw;
@@ -218,3 +219,6 @@ h6 {
     margin-top: 40px;
 }
 
+.card-reveal {
+    font-family: 'Edu NSW ACT Foundation', cursive;
+}
